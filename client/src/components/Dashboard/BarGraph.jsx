@@ -1,16 +1,6 @@
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, Cell, LabelList, ResponsiveContainer } from 'recharts';
 
-const weeklyData = [
-    { day: '9 May', tickets: 24 },
-    { day: '10 May', tickets: 38 },
-    { day: '11 May', tickets: 31 },
-    { day: '12 May', tickets: 45 },
-    { day: '13 May', tickets: 52 },
-    { day: '14 May', tickets: 18 },
-    { day: '15 May', tickets: 12 },
-];
-
 const CustomTick = ({ x, y, payload, activeIndex, index }) => {
     const [day, month] = payload.value.split(' ');
     const isActive = index === activeIndex;
@@ -27,8 +17,7 @@ const CustomTick = ({ x, y, payload, activeIndex, index }) => {
     );
 };
 
-export default function BarGraph() {
-    const [activeIndex, setActiveIndex] = useState(null);
+export default function BarGraph({activeIndex, setActiveIndex , weeklyData}) {
 
     const handleClick = (data, index) => {
         setActiveIndex(prev => prev === index ? null : index);
