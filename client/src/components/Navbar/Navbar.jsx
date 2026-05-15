@@ -18,7 +18,7 @@ const NavOpts = [
 
 export default function Navbar() {
     return (
-        <nav className='h-screen w-60  bg-[#1c1c25]  py-5 flex justify-start  flex-col '>
+        <nav className='h-auto w-60  bg-[#1c1c25]  py-5 flex justify-start  flex-col '>
             <div className="mb-7 px-5">
                 <a href="/">
                     <img src={logo} className='h-13 w-full' />
