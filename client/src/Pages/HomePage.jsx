@@ -1,7 +1,13 @@
 import BarGraph from "../components/Dashboard/BarGraph"
 import ProgressBar from "../components/Dashboard/ProgressBar"
+import StatCard from '../components/Dashboard/StatCard'
 
 import { useState } from "react"
+
+import LocalActivityOutlinedIcon from '@mui/icons-material/LocalActivityOutlined';
+import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
+import BlockIcon from '@mui/icons-material/Block';
+import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 export default function HomePage() {
 
@@ -17,17 +23,33 @@ export default function HomePage() {
         { day: '15 May', tickets: 12, pending: 20, open: 35, closed: 10 },
     ];
 
+    const statData = [
+        { icon: <LocalActivityOutlinedIcon sx={{ color: 'darkgreen', fontSize: 18 }} />, bg: 'bg-green-300', name: "Open Tickets", data: 126, percentage: '+2.6 %', positive: true },
+        { icon: <RepeatOutlinedIcon sx={{ color: 'purple', fontSize: 18 }} />, bg: 'bg-purple-300', name: "In-Progress Tickets", data: 26, percentage: '-2.6 %', positive: false },
+        { icon: <BlockIcon sx={{ color: '#ca8a04', fontSize: 18 }} />, bg: 'bg-yellow-300', name: "Closed Tickets", data: 50, percentage: '-2.6 %', positive: false },
+        { icon: <CloudDoneIcon sx={{ color: '#2563eb', fontSize: 18 }} />, bg: 'bg-blue-300', name: "Resolved Tickets", data: 69, percentage: '-2.6 %', positive: false },
+    ]
+
     return (
-        <div className="bg-[#171821] px-7 py-5 h-screen w-full grid grid-cols-3 grid-rows-2 gap-x-5">
-            <BarGraph
-                weeklyData={weeklyData}
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-            />
-            <ProgressBar
-                weeklyData={weeklyData}
-                activeIndex={activeIndex}
-            />
+        <div className="bg-[#171821] px-7 py-5 h-screen w-full flex flex-col gap-7">
+
+            <div className="grid grid-cols-4 gap-x-5">
+                {statData.map((item, index) =>
+                    <StatCard key={index} data={item} />
+                )}
+            </div>
+
+            <div className="grid grid-cols-4 gap-x-5">
+                <BarGraph
+                    weeklyData={weeklyData}
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                />
+                <ProgressBar
+                    weeklyData={weeklyData}
+                    activeIndex={activeIndex}
+                />
+            </div>
         </div>
 
     )

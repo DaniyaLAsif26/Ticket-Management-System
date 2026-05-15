@@ -5,23 +5,19 @@ export default function ProgressBar({ activeIndex, weeklyData }) {
     const selected = activeIndex !== null ? weeklyData[activeIndex] : null;
 
     const statusData = [
-        { label: 'Pending', percentage: selected ? selected.pending : 65, color: '#f59e0b' },
-        { label: 'Open', percentage: selected ? selected.open : 80, color: '#ffffff' },
-        { label: 'Closed', percentage: selected ? selected.closed : 30, color: '#3b82f6' },
+        { label: 'Pending', percentage: selected ? selected.pending : 0, color: '#fcd34d'  },
+        { label: 'Open', percentage: selected ? selected.open : 0, color: '#f1f5f9'  },
+        { label: 'Closed', percentage: selected ? selected.closed : 0, color: '#93c5fd'  },
     ];
 
     const selectedDay = selected ? selected.day : null;
 
     return (
-        <div className="box-border flex flex-col justify-start rounded-xl bg-[#21222d] px-7 py-4 text-white">
+        <div className="col-span-2 box-border flex flex-col justify-start rounded-xl bg-[#21222d] px-7 py-4 text-white">
             <h2 className="text-[1.1rem] font-semibold">Tickets by Status</h2>
-            <div className="text-gray-500 text-[0.9rem] font-normal py-2 pb-3 flex *:flex-row justify-between">
+            <div className="text-gray-500 text-[0.9rem] font-normal py-2 pb-3">
                 <p className="">
-                    {selectedDay ? selectedDay : 'Weekly Data'}
-                </p>
-
-                <p>
-                    Total Tickets : {selected ? selected.tickets : weeklyTickets}
+                    {selectedDay ? selectedDay : 'Select Day'}
                 </p>
             </div>
 
@@ -34,7 +30,7 @@ export default function ProgressBar({ activeIndex, weeklyData }) {
                             <div
                                 className="h-full rounded-full"
                                 style={{
-                                    width: `${item.percentage}%`,
+                                    width: `${item.percentage > 0 ? item.percentage : 69}%`,
                                     backgroundColor: item.color,
                                     transition: 'width 0.6s ease'
                                 }}

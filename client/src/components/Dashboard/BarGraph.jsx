@@ -7,10 +7,10 @@ const CustomTick = ({ x, y, payload, activeIndex, index }) => {
 
     return (
         <g transform={`translate(${x},${y})`}>
-            <text x={0} y={0} dy={12} textAnchor="middle" fill={isActive ? '#6366f1' : '#6b7280'} fontSize={12} fontWeight={isActive ? 600 : 400}>
+            <text x={0} y={0} dy={12} textAnchor="middle" fill={isActive ? '#80c0e9' : '#6b7280'} fontSize={12} fontWeight={isActive ? 600 : 400}>
                 {day}
             </text>
-            <text x={0} y={0} dy={26} textAnchor="middle" fill={isActive ? '#6366f1' : '#6b7280'} fontSize={12} fontWeight={isActive ? 600 : 400}>
+            <text x={0} y={0} dy={26} textAnchor="middle" fill={isActive ? '#80c0e9' : '#6b7280'} fontSize={12} fontWeight={isActive ? 600 : 400}>
                 {month}
             </text>
         </g>
@@ -24,7 +24,7 @@ export default function BarGraph({activeIndex, setActiveIndex , weeklyData}) {
     };
 
     return (
-        <div className="flex flex-col justify-center rounded-xl bg-[#21222d] px-7 py-4 text-white">
+        <div className="flex flex-col justify-center rounded-xl bg-[#21222d] px-7 py-4 text-white col-span-2">
             <h2 className="text-[1.1rem] font-semibold">Daily Tickets</h2>
             <p className="text-gray-500 text-[0.9rem] font-normal">Check out each column for more details</p>
             <div style={{ width: '100%', height: 200, minWidth: 0, outline: 'none' }}>
@@ -32,7 +32,7 @@ export default function BarGraph({activeIndex, setActiveIndex , weeklyData}) {
                     <BarChart
                         data={weeklyData}
                         margin={{ top: 20, right: 0, left: 0, bottom: 0 }}
-                        barSize={18}
+                        barSize={29}
                         barCategoryGap="20%"
                     >
                         <XAxis
@@ -52,7 +52,7 @@ export default function BarGraph({activeIndex, setActiveIndex , weeklyData}) {
                             {weeklyData.map((_, index) => (
                                 <Cell
                                     key={index}
-                                    fill={index === activeIndex ? '#6366f1' : '#343344'}
+                                    fill={index === activeIndex ? '#80c0e9' : '#343344'}
                                 />
                             ))}
                             <LabelList
@@ -64,7 +64,7 @@ export default function BarGraph({activeIndex, setActiveIndex , weeklyData}) {
                                             x={x + width / 2}
                                             y={y - 6}
                                             textAnchor="middle"
-                                            fill="#6366f1"
+                                            fill="#80c0e9"
                                             fontSize={12}
                                             fontWeight={600}
                                         >
