@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
-body {
-  background-color: #171821;
+.recharts-wrapper,
+.recharts-wrapper svg,
+.recharts-wrapper *:focus {
+  outline: none !important;
 }
+
+/* svg:focus,
+svg *:focus {
+    outline: none !important;
+} */
