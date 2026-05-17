@@ -18,7 +18,7 @@ export default function TicketsTable({ isHome = true }) {
     ];
 
     return (
-        <div className="bg-[#21222d] w-full rounded-xl text-white px-6 py-5 pb-9 ">
+        <div className="bg-[#21222d] w-full rounded-xl text-white px-6 py-5 pb-9">
             <h1 className="text-[1.75rem] mb-7">{isHome ? 'Recent Tickets' : 'All Tickets'}</h1>
 
             {!isHome &&

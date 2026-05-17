@@ -23,8 +23,6 @@ const ticketsData = [
     { id: 'TC-0012', subject: 'Page Not Loading', priority: 'Medium', customer: 'Emma Brown', agent: 'Wildan M', date: '27 Sept 2024', last: '01 Sept 2024' },
 ];
 
-const defaultData = ticketsData.slice(0, 6);
-
 // PriorityBadge 
 const priorityConfig = {
     Low: { dot: '#22c55e', text: '#22c55e', bg: '#22c55e15' },
@@ -82,7 +80,7 @@ const columns = [
         accessorKey: 'subject',
         header: 'Subject',
         cell: ({ getValue }) => (
-            <span className="text-white text-[13px] block truncate max-w-[220px]">
+            <span className="text-white text-[13px] block truncate max-w-55">
                 {getValue()}
             </span>
         ),
@@ -137,6 +135,9 @@ const columns = [
 
 // Main table
 export default function Table({ search, prioritySelected, isHome }) {
+
+const defaultData = isHome ? ticketsData.slice(0, 6) : ticketsData;
+    
     const [sorting, setSorting] = useState([]);
 
     const filteredData = useMemo(() => {
@@ -154,13 +155,13 @@ export default function Table({ search, prioritySelected, isHome }) {
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        initialState: { pagination: { pageSize: 6 } },
+        initialState: { pagination: { pageSize: 10 } },
     });
 
     const rows = table.getRowModel().rows;
 
     return (
-        <div>
+        <div className=''>
 
             {!isHome &&
                 <div className="mb-5 flex justify-end pr-5">
@@ -171,7 +172,7 @@ export default function Table({ search, prioritySelected, isHome }) {
             }
 
             <div className="overflow-x-auto">
-                <table className="w-full border-collapse min-w-[700px]">
+                <table className="w-full border-collapse min-w-175">
                     <thead>
                         {table.getHeaderGroups().map(headerGroup => (
                             <tr key={headerGroup.id} className="border-b border-[#2a2d34]">

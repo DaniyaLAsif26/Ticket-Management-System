@@ -1,3 +1,5 @@
+import { href, Link } from "react-router-dom"
+
 import logo from '../../assets/logo-up.png'
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -9,16 +11,16 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const NavOpts = [
-    { icon: DashboardIcon, name: 'Dashboard' },
-    { icon: BugReportIcon, name: 'Tickets' },
-    { icon: SupervisorAccountIcon, name: 'Customers' },
-    { icon: CategoryIcon, name: 'Categories' },
-    { icon: AdminPanelSettingsIcon, name: 'Admin' },
+    { icon: DashboardIcon, name: 'Dashboard', href: '/' },
+    { icon: BugReportIcon, name: 'Tickets', href: '/all-tickets' },
+    { icon: SupervisorAccountIcon, name: 'Customers', href: '/' },
+    { icon: CategoryIcon, name: 'Categories', href: '/' },
+    { icon: AdminPanelSettingsIcon, name: 'Admin', href: '/' },
 ]
 
 export default function Navbar() {
     return (
-        <nav className='h-auto w-60  bg-[#1c1c25]  py-5 flex justify-start  flex-col '>
+        <nav className='w-60  bg-[#1c1c25]  py-5 flex justify-start  flex-col '>
             <div className="mb-7 px-5">
                 <a href="/">
                     <img src={logo} className='h-13 w-full' />
@@ -31,10 +33,14 @@ export default function Navbar() {
 
                         return (
 
-                            <li key={i} className='flex flex-row items-center py-4  cursor-pointer px-5 hover:bg-[#2a2a35] hover:text-white'>
-                                <Icon className='mr-3 ' sx={{ fontSize: 21 }} />
-                                {item.name}
-                            </li>
+                            <Link key={i} to={item.href} >
+
+
+                                <li className='flex flex-row items-center py-4  cursor-pointer px-5 hover:bg-[#2a2a35] hover:text-white'>
+                                    <Icon className='mr-3 ' sx={{ fontSize: 21 }} />
+                                    {item.name}
+                                </li>
+                            </Link>
                         )
                     }
                     )}

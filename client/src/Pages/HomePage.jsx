@@ -34,7 +34,7 @@ export default function HomePage() {
     ]
 
     return (
-        <div className="bg-[#171821] px-7 py-5 h-full w-full flex flex-col gap-7">
+        <div className="bg-[#171821] px-7 py-5 w-full flex flex-col gap-7">
             <div className="grid grid-cols-5 gap-x-5">
                 {statData.map((item, index) =>
                     <StatCard key={index} data={item} />
@@ -53,7 +53,7 @@ export default function HomePage() {
                 />
             </div>
             <div className="">
-                <TicketsTable/>
+                <TicketsTable />
             </div>
         </div>
 
